@@ -7,13 +7,13 @@ class UserRepository implements IUserRepository {
   constructor() {}
 
   create = async (payload: IUser): Promise<IUser> => {
-    console.log({ payload });
+   
 
     let newUser = await User.create(payload);
     newUser.password = await HashService.hashPassword(
       newUser.password as string
     );
-
+newUser.save()
     return newUser;
   };
 

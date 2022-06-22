@@ -5,7 +5,10 @@ import mongoose from "mongoose";
 import AppError from "./utils/AppError";
 import AppErrorHandler from "./middlewares/AppErrorHandler";
 import config from "./config/config";
+import dotenv from "dotenv";
+import cors from "cors";
 const router = express();
+dotenv.config();
 
 mongoose
   .connect(config.mongo.url)
@@ -16,6 +19,21 @@ mongoose
     console.log(error.message, error);
   });
 router.use(express.json());
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+
+  if (req.method == "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+
+  next();
+});
+router.use(cors());
 
 router.use("/api/v1", routes);
 
