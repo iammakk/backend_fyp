@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const MONGO = {
-  url: "mongodb://localhost:27017",
+  url: "mongodb+srv://afru:afruzam1@fp.rxsfimi.mongodb.net/?retryWrites=true&w=majority",
 };
 
 const SERVER_PORT = process.env.SERVER_PORT || 1337;
