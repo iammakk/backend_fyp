@@ -10,14 +10,14 @@ import cors from "cors";
 const router = express();
 dotenv.config();
 
-mongoose
-  .connect(config.mongo.url)
-  .then((result) => {
-    console.log("Mongo Connected");
-  })
-  .catch((error) => {
-    console.log(error.message, error);
-  });
+// mongoose
+//   .connect(config.mongo.url)
+//   .then((result) => {
+//     console.log("Mongo Connected");
+//   })
+//   .catch((error) => {
+//     console.log(error.message, error);
+//   });
 router.use(express.json());
 router.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
