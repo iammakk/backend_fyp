@@ -4,4 +4,4 @@ import authRoutes from "./auth";
 
 router.use("/auth", authRoutes);
 
-export = router;
+export default router;

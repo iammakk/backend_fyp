@@ -19,38 +19,38 @@ class AuthController {
 
   login = tryCatch(async (req: Request, res: Response, next: NextFunction) => {
     
+res.send("done")
+    // const validationResult = AuthValidator.login(req.body);
 
-    const validationResult = AuthValidator.login(req.body);
+    // if (validationResult.error) {
+    //   let validatonError = validationResult.error.details[0].message;
+    //   return next(new AppError(validatonError, 400));
+    // }
 
-    if (validationResult.error) {
-      let validatonError = validationResult.error.details[0].message;
-      return next(new AppError(validatonError, 400));
-    }
+    // const checkUser = await this.userRepository.findByEmail(
+    //   validationResult.value.email
+    // );
 
-    const checkUser = await this.userRepository.findByEmail(
-      validationResult.value.email
-    );
+    // if (!checkUser) {
+    //   return next(new AppError("User with this Email does not exists", 404));
+    // }
 
-    if (!checkUser) {
-      return next(new AppError("User with this Email does not exists", 404));
-    }
-
-    if (
-      checkUser &&
-      !(await HashService.check(
-        validationResult.value.password as string,
-        checkUser.password as string
-      ))
-    ) {
-      return next(new AppError("Invalid credentials", 400));
-    }
-    const token = generateToken(checkUser);
-    return AppResponse.success(
-      res,
-      { user: checkUser, token: token },
-      "Success",
-      200
-    );
+    // if (
+    //   checkUser &&
+    //   !(await HashService.check(
+    //     validationResult.value.password as string,
+    //     checkUser.password as string
+    //   ))
+    // ) {
+    //   return next(new AppError("Invalid credentials", 400));
+    // }
+    // const token = generateToken(checkUser);
+    // return AppResponse.success(
+    //   res,
+    //   { user: checkUser, token: token },
+    //   "Success",
+    //   200
+    // );
   });
 
   register = tryCatch(
