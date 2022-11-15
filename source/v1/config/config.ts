@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const MONGO = {
-  url: "mongodb+srv://afru:afruzam1@fp.rxsfimi.mongodb.net/?retryWrites=true&w=majority",
+  url: "mongodb+srv://adil:adil123@fypp.sbwexye.mongodb.net/test",
 };
 
 const SERVER_PORT = 1337;
